@@ -7,13 +7,13 @@
 Summary:	Z img - resizing, colorspace and bit depth conversion library
 Summary(pl.UTF-8):	Z img - biblioteka do zmiany rozmiaru oraz przekształceń przestrzeni i głębi barw
 Name:		zimg
-Version:	2.0.4
+Version:	2.5.1
 Release:	1
 License:	WTFPL v2 (library), LGPL v2.1+ (vszimg plugin)
 Group:		Libraries
 #Source0Download: https://github.com/sekrit-twc/zimg/releases
 Source0:	https://github.com/sekrit-twc/zimg/archive/release-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	dc8c7878e77d969220759c29e0f003c4
+# Source0-md5:	24afac41d38398bef9ee9a55c6bf1627
 URL:		https://github.com/sekrit-twc/zimg
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
@@ -91,8 +91,11 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 # obsoleted by pkg-config
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libzimg.la \
-	$RPM_BUILD_ROOT%{_libdir}/zimg/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libzimg.la
+
+install -d $RPM_BUILD_ROOT%{_examplesdir}
+%{__mv} $RPM_BUILD_ROOT%{_docdir}/zimg/example $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/zimg
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -117,6 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/zimg.h
 %{_includedir}/zimg++.hpp
 %{_pkgconfigdir}/zimg.pc
+%{_examplesdir}/%{name}-%{version}
 
 %if %{with static_libs}
 %files static
