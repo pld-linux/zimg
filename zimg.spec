@@ -1,5 +1,4 @@
 # NOTE: for http://zimg.buaa.us/ see zimg-storage.spec
-# TODO: vapoursynth (https://github.com/vapoursynth/vapoursynth / http://www.vapoursynth.com/)
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static libraries
