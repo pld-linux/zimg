@@ -6,17 +6,17 @@
 Summary:	Z img - resizing, colorspace and bit depth conversion library
 Summary(pl.UTF-8):	Z img - biblioteka do zmiany rozmiaru oraz przekształceń przestrzeni i głębi barw
 Name:		zimg
-Version:	2.7.4
+Version:	2.8
 Release:	1
 License:	WTFPL v2 (library), LGPL v2.1+ (vszimg plugin)
 Group:		Libraries
 #Source0Download: https://github.com/sekrit-twc/zimg/releases
 Source0:	https://github.com/sekrit-twc/zimg/archive/release-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	1757dcc11590ef3b5a56c701fd286345
+# Source0-md5:	ad01628ecb53ebe795189c191aebef87
 URL:		https://github.com/sekrit-twc/zimg
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
-BuildRequires:	libstdc++-devel >= 6:4.3
+BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	libtool >= 2:2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -46,7 +46,7 @@ Summary:	Header files for Z img library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Z img
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	libstdc++-devel >= 6:4.3
+Requires:	libstdc++-devel >= 6:4.7
 
 %description devel
 Header files for Z img library.
