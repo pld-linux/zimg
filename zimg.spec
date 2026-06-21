@@ -6,13 +6,13 @@
 Summary:	Z img - resizing, colorspace and bit depth conversion library
 Summary(pl.UTF-8):	Z img - biblioteka do zmiany rozmiaru oraz przekształceń przestrzeni i głębi barw
 Name:		zimg
-Version:	3.0.5
+Version:	3.0.6
 Release:	1
-License:	WTFPL v2 (library), LGPL v2.1+ (vszimg plugin)
+License:	WTFPL v2 (library)
 Group:		Libraries
 #Source0Download: https://github.com/sekrit-twc/zimg/releases
 Source0:	https://github.com/sekrit-twc/zimg/archive/release-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	af2c08cc0e695f4c0c225feed14e9f20
+# Source0-md5:	b2184ea83017b0026235af1dd0e54388
 URL:		https://github.com/sekrit-twc/zimg
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
@@ -76,10 +76,7 @@ Statyczna biblioteka Z img.
 %{__automake}
 %configure \
 	--disable-silent-rules \
-	%{!?with_static_libs:--disable-static} \
-%ifarch %{ix86} %{x8664} x32
-	--enable-x86simd
-%endif
+	%{!?with_static_libs:--disable-static}
 
 %{__make}
 
@@ -105,17 +102,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc COPYING ChangeLog README.md
-%attr(755,root,root) %{_libdir}/libzimg.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libzimg.so.2
-%if 0
-# vapoursynth plugin (no vapoursynth in PLD yet)
-%dir %{_libdir}/zimg
-%attr(755,root,root) %{_libdir}/zimg/vszimg.so
-%endif
+%{_libdir}/libzimg.so.*.*.*
+%ghost %{_libdir}/libzimg.so.2
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libzimg.so
+%{_libdir}/libzimg.so
 %{_includedir}/zimg.h
 %{_includedir}/zimg++.hpp
 %{_pkgconfigdir}/zimg.pc
